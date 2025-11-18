@@ -1,0 +1,10 @@
+#data
+data/
+secret_key.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/

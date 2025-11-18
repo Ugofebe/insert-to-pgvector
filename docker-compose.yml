@@ -1,0 +1,29 @@
+services:
+  insert-app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_CONNECTION_STRING=${DB_CONNECTION_STRING}
+      - DB_COLLECTION_NAME=${DB_COLLECTION_NAME}
+    volumes:
+      # - ./research_db:/app/research_db
+      # - ./ocr_data_output:/app/ocr_data_output
+      - ./data:/app/data
+      - huggingface_cache:/app/.cache/huggingface
+      - sentence_transformers_cache:/app/.cache/sentence_transformers
+    restart: "no" #it is set to no because it is not a swerver and does not need to restart
+    #remove healthcheck because it is not a server
+    # healthcheck:
+    #   test: ["CMD", "curl", "-f", "http://localhost:8000/"]
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 3
+    #   start_period: 40s
+
+
+volumes:
+  huggingface_cache:
+  sentence_transformers_cache:
+   
+# docker compose run rag-app

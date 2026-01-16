@@ -3,6 +3,8 @@ data/
 secret_key.py
 mkdocs.yaml
 test.ipynb
+processed_pdfs.json
+
 # Environments
 .env
 .venv

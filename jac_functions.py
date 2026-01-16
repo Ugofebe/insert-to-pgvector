@@ -21,43 +21,12 @@ embeddings = HuggingFaceEmbeddings(
     model_name="all-MiniLM-L6-v2"
     )
 
-# from langchain_postgres import PGVector
 
-# 2. Connect to your persistent ChromaDB folder
-# client = chromadb.PersistentClient(path="./research_db")
-# collection = client.get_or_create_collection(
-#     name="ml_publications",
-#     metadata={"hnsw:space": "cosine"}
-#)
 from dotenv import load_dotenv
 load_dotenv()
-# CONNECTION_STRING = "postgresql+psycopg2://postgres:postgres@localhost:5432/postgres"
 DB_CONNECTION_STRING = os.getenv("DB_CONNECTION_STRING")
-DB_COLLECTION_NAME = os.getenv("ml_publications")
+DB_COLLECTION_NAME = os.getenv("DB_COLLECTION_NAME")
 
-# DB_CONNECTION_STRING = DB_CONNECTION_STRING
-# DB_COLLECTION_NAME = DB_COLLECTION_NAME
-
-# db = PGVector.from_documents(
-#     embedding=embeddings,
-#     documents=texts,
-#     collection_name=COLLECTION_NAME,
-#     connection_string=CONNECTION_STRING,
-# )
-# 4. Get retriever for RAG
-# retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
-
-
-# # Set up our embedding model
-# embeddings = HuggingFaceEmbeddings(
-#     model_name="all-MiniLM-L6-v2"
-#     )
-# def clean_text(text):
-#     if not isinstance(text, str):
-#         return text
-#     # Remove null bytes and other non-printable characters
-#     return text.replace('\x00', '').strip()
-# import re
 
 def clean_text(text: str) -> str:
     """
@@ -161,11 +130,6 @@ def store_in_pgvector(documents: list[str], collection_name: str):
     print(f"Stored {len(documents)} documents in collection '{collection_name}'")
 
     return db
-# import torch
-# from langchain.embeddings import HuggingFaceEmbeddings
-# from langchain.vectorstores.pgvector import PGVector
-# from langchain.docstore.document import Document
-# from langchain.prompts import PromptTemplate
 
 # -------------------------------
 # 1. Setup Embedding Model (no cache)
@@ -183,7 +147,7 @@ def embedder():
     )
 
 # -------------------------------
-# 2. Insert Documents into PGVector
+# 2. Former Insert Documents into PGVector function
 # -------------------------------
 # from langchain.vectorstores import PGVector
 # from langchain.docstore.document import Document

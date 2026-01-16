@@ -105,10 +105,15 @@ Your table must include a `vector` column.
 
 ## ▶️ Running the Embedding Insert Script Manually
 
-``` bash
-docker exec -it rag-app python insert_pg_2.py
-```
+### For S3 bucket files simple files. 
 
+``` bash
+docker exec -it rag-app python insert_main_s3.py
+```
+### For single simple files. 
+``` bash
+docker exec -it rag-app python insert_pgvector.py
+```
 ------------------------------------------------------------------------
 
 ## 📦 Rebuilding After Code Changes

@@ -207,6 +207,7 @@ def generate_content_hash(text: str, title: str) -> str:
     """
     normalized = f"{title.strip().lower()}::{text.strip().lower()}"
     return hashlib.sha256(normalized.encode("utf-8")).hexdigest()
+
 import hashlib
 from sqlalchemy import create_engine, text
 from langchain_community.vectorstores import PGVector

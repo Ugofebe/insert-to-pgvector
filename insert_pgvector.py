@@ -2,7 +2,7 @@
 import tempfile
 import os
 from inserting_file import load_pdf_to_dicts_s3, load_pdf_to_dicts 
-from jac_functions import insert_publications
+from jac_functions_update import insert_publications
 
 
 

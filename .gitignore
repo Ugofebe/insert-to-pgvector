@@ -1,5 +1,7 @@
 #data
 data/
+insertion/
+docs/
 secret_key.py
 mkdocs.yaml
 test.ipynb
